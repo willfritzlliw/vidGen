@@ -8,6 +8,7 @@ import pygame
 from datetime import datetime
 import schedule
 import os
+import upload
 
 def generate():
     #setting up nessisary variables
@@ -49,7 +50,7 @@ def generate():
         aud_clip = AudioFileClip(files[1])
         aud_list.append(aud_clip)
         aud_durr += float(aud_clip.duration)
-
+  
     #filling video clip list until current audio durration is met
     vid_list = [vid_clip]
     vid_durr = float(vid_clip.duration)
@@ -70,7 +71,11 @@ def generate():
     #writing final video
     vid_comp.audio = aud_comp
 
-    vid_comp.write_videofile("Mount/Done/"+datetime.today().strftime("%a %m %y")+'-video.mp4')
+    file_name = "Mount/Done/"+datetime.today().strftime("%a %m %y")+'-video.mp4'
+
+    vid_comp.write_videofile(file_name)
+
+    upload.upload(filepath=file_name)
 
 
 
