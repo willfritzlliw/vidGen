@@ -1,4 +1,3 @@
-import httplib
 import httplib2
 import os
 import random
@@ -20,10 +19,7 @@ httplib2.RETRIES = 1
 MAX_RETRIES = 10
 
 # Always retry when these exceptions are raised.
-RETRIABLE_EXCEPTIONS = (httplib2.HttpLib2Error, IOError, httplib.NotConnected,
-  httplib.IncompleteRead, httplib.ImproperConnectionState,
-  httplib.CannotSendRequest, httplib.CannotSendHeader,
-  httplib.ResponseNotReady, httplib.BadStatusLine)
+RETRIABLE_EXCEPTIONS = (httplib2.HttpLib2Error, IOError)
 
 # Always retry when an apiclient.errors.HttpError with one of these status codes are raised.
 RETRIABLE_STATUS_CODES = [500, 502, 503, 504]
@@ -117,7 +113,7 @@ def resumable_upload(request):
       print ('Sleeping %f seconds and then retrying...' % sleep_seconds)
       time.sleep(sleep_seconds)
 
-def upload(filepath: str):
+def upload(filepath: str,tag1: str):
     #setting defaults incase of failure
     args = {}
     args['file'] = filepath
@@ -132,7 +128,7 @@ def upload(filepath: str):
     try:
         args['title'] = captions.get_title()
         args['description'] = captions.get_description()
-        args['keywords'] = captions.get_tags()
+        args['keywords'] = captions.get_tags(tag1)
     except Exception as e:
         print('custom meta data failed: '+ e.__str__)
 

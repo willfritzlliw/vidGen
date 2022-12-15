@@ -55,6 +55,7 @@ def generate():
     vid_list = [vid_clip]
     vid_durr = float(vid_clip.duration)
 
+
     while vid_durr < aud_durr:
         files = get_files(path=path)
         vid_clip = VideoFileClip(files[0])
@@ -75,7 +76,7 @@ def generate():
 
     vid_comp.write_videofile(file_name)
 
-    upload.upload(filepath=file_name)
+    #upload.upload(file_name,files[2])
 
 
 
