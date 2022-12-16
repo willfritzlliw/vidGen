@@ -72,7 +72,7 @@ def generate():
     #writing final video
     vid_comp.audio = aud_comp
 
-    file_name = "Mount/Done/"+datetime.today().strftime("%a %m %y")+'-video.mp4'
+    file_name = "Mount/Done/"+datetime.today().strftime("%a-%m-%y-%H%M")+'-video.mp4'
 
     vid_comp.write_videofile(file_name)
 
@@ -121,7 +121,7 @@ def get_files(path = "") -> list:
 
 ##########################    Job Scheduling     ################################ 
 
-schedule.every(30).seconds.do(generate)
+schedule.every(10).minutes.do(generate)
 
 while True:
     schedule.run_pending()

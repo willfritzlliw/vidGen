@@ -126,8 +126,8 @@ def upload(filepath: str,tag1: str):
 
     #getting automated captions
     try:
-        args['title'] = captions.get_title()
-        args['description'] = captions.get_description()
+        args['title'] = captions.get_title(tag1)
+        args['description'] = captions.get_description(tag1)
         args['keywords'] = captions.get_tags(tag1)
     except Exception as e:
         print('custom meta data failed: '+ e.__str__)
