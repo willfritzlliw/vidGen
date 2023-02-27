@@ -9,25 +9,22 @@ from datetime import datetime
 import schedule
 import os
 import upload
+import pandas as pd
 
 def generate():
     #setting up nessisary variables
     path = ""
-    desired_durration_min = 5
+    desired_durration_min = 10
     
 
     #determining the day of the week and setting desired durrations and filepaths to match the path that goes with that day
     day = datetime.today().weekday()
-    match day:
-        case 0:
-            path = ""
-            desired_durration_min = 5
-        case 4:
-            path = ""
-            desired_durration_min = 5
-        case 5:
-            path = ""
-            desired_durration_min = 5
+    pathList = pd.read_csv('paths.csv')
+
+    for ind, row in pathList.iterrows():
+        if day == int(row['day']):
+            path = row['path']
+            desired_durration_min = row['durration']
 
     #setting durration to a seconds representaion in order to match the lenght representaion of moviepy
     desired_durr = float(desired_durration_min * 60)
@@ -76,7 +73,7 @@ def generate():
 
     vid_comp.write_videofile(file_name)
 
-    #upload.upload(file_name,files[2])
+    upload.upload(file_name,files[2])
 
 
 
@@ -121,7 +118,7 @@ def get_files(path = "") -> list:
 
 ##########################    Job Scheduling     ################################ 
 
-schedule.every(10).minutes.do(generate)
+schedule.every(2).hours.do(generate)
 
 while True:
     schedule.run_pending()
