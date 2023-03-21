@@ -15,7 +15,13 @@ def generate():
     #setting up nessisary variables
     path = ""
     desired_durration_min = 10
-    
+
+    with open('durration_base.txt','r') as f:
+        durr_temp = f.read()
+        try:
+            desired_durration_min = float(durr_temp)
+        except:
+            print("Failed to cast desired durr base to float")
 
     #determining the day of the week and setting desired durrations and filepaths to match the path that goes with that day
     day = datetime.today().weekday()
@@ -24,9 +30,12 @@ def generate():
     for ind, row in pathList.iterrows():
         if day == int(row['day']):
             path = row['path']
-            desired_durration_min = row['durration']
+            try:
+                desired_durration_min = float(row['durration'])
+            except:
+                print('failed to cast durration to a float for day '+day)
 
-    #setting durration to a seconds representaion in order to match the lenght representaion of moviepy
+    #setting durration to a seconds representaion in order to match the length representaion of moviepy
     desired_durr = float(desired_durration_min * 60)
 
     #getting audio and video files
