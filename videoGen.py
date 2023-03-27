@@ -82,7 +82,7 @@ def generate():
 
     vid_comp.write_videofile(file_name)
 
-    upload.upload(file_name,files[2])
+    upload.upload(file_name,path)
 
 
 
