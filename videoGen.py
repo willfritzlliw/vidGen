@@ -127,7 +127,7 @@ def get_files(path = "") -> list:
 
 ##########################    Job Scheduling     ################################ 
 
-schedule.every(2).hours.do(generate)
+schedule.every(4).hours.do(generate)
 
 while True:
     schedule.run_pending()
