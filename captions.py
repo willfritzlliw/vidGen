@@ -48,21 +48,22 @@ def get_description(tag: str):
         "listen and enjoy while you study and work!",
         ", thank you for listening!",
         "Keep focused with this ambient music.",
-        "to help you study, read, concentrate and stay motivated.",
+        "to help you study, read, concentrate and stay motivated!",
         "thanks for tuning in, hope you enjoy!",
         "to put you in in a good mode and headspace.",
         "for deep focus,",
         "to boost your mood!",
-        "to increase your concentration and productivity",
-        "for ambient atmoshperics",
+        "to increase your concentration and productivity!",
+        "for ambient atmoshperics,",
         "",
     ]
 
     randy = randint(0,(len(descAdders)-1))
 
-    desc = desc + f" {descAdders[randy]} Please like and subscribe for more!! \n\n"
-    desc = desc + "Check out   \n\n"
-    desc = desc + "Get    \n\n"
-    desc = desc + "music and audio from  \n\n"
+    desc = desc + f" {descAdders[randy]} Please like and subscribe for more!! \n"
+
+    with open('desc_adder.txt') as f:
+        for line in f.readlines():
+            desc = desc + line
 
     return desc

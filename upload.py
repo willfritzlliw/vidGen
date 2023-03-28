@@ -120,7 +120,7 @@ def upload(filepath: str,tag1: str):
     args['title'] ='Modivation'
     args['description'] ='Modivational Video'
     #See https://developers.google.com/youtube/v3/docs/videoCategories/list
-    args['category'] ='22'
+    args['category'] ='10'
     args['keywords'] = 'Modivation,Music,Study,Grind' 
     args['privacyStatus'] = VALID_PRIVACY_STATUSES['public']
 
