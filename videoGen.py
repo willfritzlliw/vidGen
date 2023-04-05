@@ -41,6 +41,7 @@ def generate():
     #getting audio and video files
     files = get_files(path=path)
     vid_clip = VideoFileClip(files[0])
+    vid_clip = vid_clip.resize((1920,1080))
     aud_clip = AudioFileClip(files[1])
 
     #if path was random we need to set it to the folder from the first file pull so the compositions will flow well
@@ -65,11 +66,12 @@ def generate():
     while vid_durr < aud_durr:
         files = get_files(path=path)
         vid_clip = VideoFileClip(files[0])
+        vid_clip = vid_clip.resize((1920,1080))
         vid_list.append(vid_clip)
         vid_durr += float(vid_clip.duration)
 
     # #setting up the final compositions
-    vid_comp = concatenate_videoclips(vid_list)
+    vid_comp = concatenate_videoclips(vid_list, method='compose')
     aud_comp = concatenate_audioclips(aud_list)
 
     #both audio and video need to end at the same time
@@ -123,7 +125,6 @@ def get_files(path = "") -> list:
         audrand = random.randint(0,(len(audioFilePath)-1))
 
         return ['Mount/Video/'+path+'/'+vidFilePath[vidRand] , 'Mount/Audio/'+path+'/'+audioFilePath[audrand]]
-
 
 ##########################    Job Scheduling     ################################ 
 
