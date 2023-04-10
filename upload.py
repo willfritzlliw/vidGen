@@ -10,7 +10,6 @@ from googleapiclient.http import MediaFileUpload
 from google_auth_oauthlib.flow import InstalledAppFlow
 import captions
 
-
 # Explicitly tell the underlying HTTP transport library not to retry, since
 # we are handling retry logic ourselves.
 httplib2.RETRIES = 1
@@ -38,7 +37,7 @@ VALID_PRIVACY_STATUSES = {'public':'public', 'private':'private', 'unlisted':'un
 # Authorize the request and store authorization credentials.
 def get_authenticated_service():
   flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
-  credentials = flow.run_local_server()
+  credentials = flow.run_console()
   return build(API_SERVICE_NAME, API_VERSION, credentials = credentials)
 
 def initialize_upload(youtube, options):
@@ -113,6 +112,8 @@ def resumable_upload(request):
       print ('Sleeping %f seconds and then retrying...' % sleep_seconds)
       time.sleep(sleep_seconds)
 
+youtube = get_authenticated_service()
+
 def upload(filepath: str,tag1: str):
     #setting defaults incase of failure
     args = {}
@@ -132,7 +133,7 @@ def upload(filepath: str,tag1: str):
     except Exception as e:
         print('custom meta data failed: '+ e.__str__)
 
-    youtube = get_authenticated_service()
+    global youtube
 
     try:
         initialize_upload(youtube, args)

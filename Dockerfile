@@ -9,4 +9,4 @@ RUN pip3 install Pillow
 RUN pip3 install -r requirements.txt
 COPY . .
 WORKDIR /
-CMD [ "python3","videoGen.py"]
+CMD [ "python3","main.py"]

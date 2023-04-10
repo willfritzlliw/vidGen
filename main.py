@@ -128,8 +128,9 @@ def get_files(path = "") -> list:
 
 ##########################    Job Scheduling     ################################ 
 
-schedule.every(4).hours.do(generate)
+if __name__ == '__main__':
+    schedule.every(4).hours.do(generate)
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
