@@ -15,7 +15,7 @@ def get_title(tag: str):
         "Study",
         "Ambient",
         "Gaming",
-        "Coding"
+        "Coding",
         "Reading",
         "Working",
         "Concentration",
