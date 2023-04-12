@@ -72,7 +72,7 @@ def initialize_upload(youtube, options):
   insert_request = youtube.videos().insert(
     part=','.join(body.keys()),
     body=body,
-    media_body=MediaFileUpload(options.file, chunksize=-1, resumable=True)
+    media_body=MediaFileUpload(options['file'], chunksize=-1, resumable=True)
   )
 
   resumable_upload(insert_request)
