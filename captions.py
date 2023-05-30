@@ -9,21 +9,30 @@ def get_tags(tag1: str):
 
 def get_title(tag: str):
     tag = tag.capitalize()
-    title = f"{tag} Music -"
+    title = f"{tag} "
+
+    titleMains = [
+        "Gaming Music 🎮",
+        "Study Music 📚",
+        "Coding Music 💻",
+        "Working Music 🛠️",
+        "Music for Concentration 🧠",
+        "Music for Creativity 💭",
+        "Music for Productivity 🔥"
+    ]
 
     titleAddrs = [
-        "Study",
+        "Calm Your Mind",
         "Ambient",
-        "Gaming",
-        "Coding",
-        "Reading",
-        "Working",
-        "Concentration",
+        "Increase Concentration",
         "Brain Power",
-        "Smooth",
-        "Focus",
+        "Smooth Workflow",
+        "Background Music",
+        "Laser Focus",
         "Stress Relief",
-        "Mood",
+        "Improve Your Mood",
+        "Mind Boosting",
+        "Deep Learning"
     ]
 
     randy1 = randint(0,(len(titleAddrs)-1))
@@ -36,7 +45,7 @@ def get_title(tag: str):
     while randy3 == randy1 or randy3 == randy2:
         randy3 = randint(0,(len(titleAddrs)-1))
 
-    title = title + f" {titleAddrs[randy1]} | {titleAddrs[randy2]} | {titleAddrs[randy3]}"
+    title = title + f" {titleAddrs[randy1]} - {titleAddrs[randy2]}"
 
     return title
 

@@ -124,6 +124,7 @@ def upload(filepath: str,tag1: str):
     args['category'] ='10'
     args['keywords'] = 'Modivation,Music,Study,Grind' 
     args['privacyStatus'] = VALID_PRIVACY_STATUSES['public']
+    args['selfDeclaredMadeForKids'] = False
 
     #getting automated captions
     try:
