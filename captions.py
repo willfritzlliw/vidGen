@@ -9,7 +9,7 @@ def get_tags(tag1: str):
 
 def get_title(tag: str):
     tag = tag.capitalize()
-    title = f"{tag} "
+    title = ""
 
     titleMains = [
         "Gaming Music 🎮",
@@ -39,13 +39,15 @@ def get_title(tag: str):
     randy2 = randint(0,(len(titleAddrs)-1))
     randy3 = randint(0,(len(titleAddrs)-1))
 
+    randTitle = randint(0,(len(titleMains)-1))
+
     while randy2 == randy1:
         randy2 = randint(0,(len(titleAddrs)-1))
     
     while randy3 == randy1 or randy3 == randy2:
         randy3 = randint(0,(len(titleAddrs)-1))
 
-    title = title + f" {titleAddrs[randy1]} - {titleAddrs[randy2]}"
+    title = titleMains[randTitle] + f" - {tag} - {titleAddrs[randy1]} - {titleAddrs[randy2]}"
 
     return title
 
@@ -76,3 +78,5 @@ def get_description(tag: str):
             desc = desc + line
 
     return desc
+
+print(get_title('chill'))
