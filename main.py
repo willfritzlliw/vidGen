@@ -126,10 +126,11 @@ def get_files(path = "") -> list:
 
         return ['Mount/Video/'+path+'/'+vidFilePath[vidRand] , 'Mount/Audio/'+path+'/'+audioFilePath[audrand]]
 
+
 ##########################    Job Scheduling     ################################ 
 
 if __name__ == '__main__':
-    schedule.every(8).hours.do(generate)
+    schedule.every().day.at("7:00").do(generate)
 
     while True:
         schedule.run_pending()

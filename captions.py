@@ -91,5 +91,3 @@ def get_description(tag: str):
             desc = desc + line
 
     return desc
-
-# Recopilacion de musica! Por favor, dale me gusta y suscríbete!
