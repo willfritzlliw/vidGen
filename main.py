@@ -130,7 +130,7 @@ def get_files(path = "") -> list:
 ##########################    Job Scheduling     ################################ 
 
 if __name__ == '__main__':
-    schedule.every().day.at("7:00").do(generate)
+    schedule.every().day.at("07:00:00").do(generate)
 
     while True:
         schedule.run_pending()
