@@ -1,4 +1,5 @@
 numpy
+pillow==9.5.0
 moviepy
 pygame
 schedule
