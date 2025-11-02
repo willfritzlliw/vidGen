@@ -12,6 +12,10 @@ import upload
 import pandas as pd
 
 def generate():
+    """
+    Generates a video with a specified duration, using audio and video clips from a specified or random path.
+    The generated video is then uploaded to YouTube.
+    """
     #setting up nessisary variables
     path = ""
     desired_durration_min = 10
@@ -90,11 +94,15 @@ def generate():
 
 def get_files(path = "") -> list:
     """
-        If provided a path this function will fetch a random file in that filepath, if not this function will 
-        fetch a random path and a random file in that path
+    Fetches random video and audio files from a specified or random path.
 
-        This function returns a list of filepaths
+    Args:
+        path: The path to the directory containing the video and audio files.
+              If not provided, a random path will be chosen.
 
+    Returns:
+        A list of filepaths, with the video filepath at index 0 and the audio filepath at index 1.
+        If a random path is chosen, the path itself is returned at index 2.
     """
     #If no path is provided this will select a random folder & random audio & video file for that random folder
     if path == "":

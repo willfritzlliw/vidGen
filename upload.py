@@ -36,11 +36,24 @@ VALID_PRIVACY_STATUSES = {'public':'public', 'private':'private', 'unlisted':'un
 
 # Authorize the request and store authorization credentials.
 def get_authenticated_service():
+  """
+  Authorizes the request and stores authorization credentials.
+
+  Returns:
+    A YouTube API service object.
+  """
   flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
   credentials = flow.run_console()
   return build(API_SERVICE_NAME, API_VERSION, credentials = credentials)
 
 def initialize_upload(youtube, options):
+  """
+  Initializes the video upload process to YouTube.
+
+  Args:
+    youtube: The authenticated YouTube API service object.
+    options: A dictionary containing video metadata (title, description, tags, category, privacy status, file path).
+  """
   tags = None
   if options['keywords'] != '':
     tags = options['keywords'].split(',')
@@ -80,6 +93,12 @@ def initialize_upload(youtube, options):
 # This method implements an exponential backoff strategy to resume a
 # failed upload.
 def resumable_upload(request):
+  """
+  Implements an exponential backoff strategy to resume a failed upload.
+
+  Args:
+    request: The MediaFileUpload request object.
+  """
   response = None
   error = None
   retry = 0
@@ -115,6 +134,13 @@ def resumable_upload(request):
 youtube = get_authenticated_service()
 
 def upload(filepath: str,tag1: str):
+    """
+    Uploads a video to YouTube with dynamically generated metadata.
+
+    Args:
+        filepath: The path to the video file to upload.
+        tag1: The primary tag used for generating video metadata.
+    """
     #setting defaults incase of failure
     args = {}
     args['file'] = filepath

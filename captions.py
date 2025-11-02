@@ -1,6 +1,15 @@
 from random import randint
 
 def get_tags(tag1: str):
+    """
+    Generates a comma-separated string of tags for a video.
+
+    Args:
+        tag1: The primary tag for the video.
+
+    Returns:
+        A comma-separated string of tags.
+    """
     tags = ["Modivation","Chill out","Beats","Study","Work","Focus","Gaming","School","College","Reading","Ambient","Walking","Coding","Feel Good","Deep Focus","Brain Power","Brain Boost","Mood","Smooth"]
     tags2 = ["Motivación","Relajarse","Latidos","Estudiar","Trabajar","Enfocar","Juego de azar","Escuela","Colega","Lectura",
              "Ambiente","Caminando","Codificación","Sentirse bien","Enfoque profundo","Poder cerebral","Impulso cerebral","Ánimo","Liso"]
@@ -10,6 +19,15 @@ def get_tags(tag1: str):
     return f"{tag1},Music,Compilation,{tags[randy]},{tags[randy+1]},{tags[randy+2]},{tags[randy+3]},{tags[randy+4]},{tags2[randy]},{tags2[randy+1]},{tags2[randy+2]},{tags2[randy+3]},{tags2[randy+4]}"
 
 def get_title(tag: str):
+    """
+    Generates a title for a video.
+
+    Args:
+        tag: The primary tag for the video.
+
+    Returns:
+        A title string for the video.
+    """
     tag = tag.capitalize()
     title = ""
 
@@ -65,6 +83,15 @@ def get_title(tag: str):
     return title
 
 def get_description(tag: str):
+    """
+    Generates a description for a video.
+
+    Args:
+        tag: The primary tag for the video.
+
+    Returns:
+        A description string for the video.
+    """
     tag = tag.capitalize()
     desc = f"{tag} music compilation"
 
